@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Card Fighters 2 Expand Edition - Traducción al español por Fveralv</title>
+<meta name="description" content="Progreso y parches de la traducción al español de SNK vs. Capcom: Card Fighters 2 Expand Edition (Neo Geo Pocket Color).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#070b24; --night2:#0c1440;
+    --gold:#ffc82e; --gold2:#ffe07a; --orange:#ff8a1f; --red:#e8283a; --blue:#2f6bff;
+    --text:#eef1ff; --text2:#b4bfe8; --muted:#7481b4;
+    --box1:#0b1c8c; --box2:#06105a; --boxline:#ffffff;
+    --ok:#4cc98e; --wip:#ffc82e; --todo:#a3aad6;
+    --head:"Russo One",Impact,sans-serif; --sans:"Nunito",system-ui,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{background:var(--night)}
+  body{margin:0;color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.6;min-height:100vh;overflow-x:hidden;
+    background:
+      radial-gradient(ellipse 90% 45% at 50% -8%,rgba(255,200,46,.38) 0%,rgba(255,138,31,.22) 35%,rgba(232,40,58,.10) 60%,transparent 80%),
+      linear-gradient(180deg,var(--night2) 0%,var(--night) 70%) fixed}
+  #fx{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+  main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:40px 20px 80px}
+  a{color:var(--gold2)}
+  h1,h2,h3{font-family:var(--head);font-weight:400;margin:0;letter-spacing:.04em}
+  p{margin:.5em 0}
+  .dim{color:var(--text2)}
+  .muted{color:var(--muted)}
+
+  /* Titulos de seccion: la pestaña con el nombre del que habla en los dialogos del juego */
+  h2{display:table;font-size:18px;margin:58px 0 -3px 18px;padding:4px 16px 3px;position:relative;z-index:2;
+    color:#fff;background:var(--box1);border:3px solid var(--boxline);border-bottom:none;border-radius:4px 4px 0 0;
+    letter-spacing:.1em;text-transform:uppercase;text-shadow:2px 2px 0 #030840}
+  h2 + .box{border-top-left-radius:0}
+
+  /* Cabecera */
+  header{text-align:center;padding:24px 0 10px}
+  .platform{font-size:13px;letter-spacing:.35em;color:var(--text2);text-transform:uppercase}
+  .logo{margin:16px 0 6px;line-height:1}
+  .logo img{display:block;margin:0 auto;width:min(560px,90%);height:auto;filter:drop-shadow(0 6px 22px rgba(0,0,0,.55))}
+  .logo .fallback{display:block;font-family:var(--head);font-size:clamp(40px,9vw,82px);letter-spacing:.02em;
+    background:linear-gradient(180deg,#fff6c9 0%,var(--gold) 45%,var(--orange) 75%,var(--red) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(3px 4px 0 #0b1c8c)}
+  .logo .fallback small{display:block;font-size:.4em;letter-spacing:.3em;margin-top:8px}
+  .logo img + .fallback{display:none}
+  .subtitle{display:inline-block;margin-top:16px;padding:6px 20px;border:2px solid var(--gold);border-radius:3px;transform:skewX(-10deg);
+    font-family:var(--head);letter-spacing:.14em;color:#1b1000;background:linear-gradient(180deg,var(--gold2),var(--gold) 60%,var(--orange));box-shadow:4px 4px 0 var(--red)}
+  .subtitle span{display:inline-block;transform:skewX(10deg)}
+
+  /* Capturas: pantalla de Neo Geo Pocket Color (160x152) con marco de carta */
+  .shots{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:34px auto 0;max-width:680px}
+  .shot{position:relative;margin:0;aspect-ratio:160/152;overflow:hidden;border-radius:6px;background:linear-gradient(180deg,var(--box1),var(--box2));
+    border:3px solid var(--boxline);box-shadow:0 0 0 2px #000 inset,0 12px 28px rgba(0,0,0,.5);transition:transform .2s}
+  .shot:hover{transform:translateY(-4px) rotate(-1deg)}
+  .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;image-rendering:pixelated}
+  .shot .empty{position:absolute;inset:0;display:grid;place-items:center;align-content:center;text-align:center;font-size:12px;color:#b9c3ea}
+
+  /* Recuadros: cuadros de dialogo azules con borde blanco */
+  .box{position:relative;background:linear-gradient(180deg,#1238c8 0%,var(--box1) 40%,var(--box2) 100%);
+    border:3px solid var(--boxline);border-radius:4px;padding:22px 24px;
+    box-shadow:0 0 0 2px #000 inset,0 0 0 1px rgba(0,0,0,.7),0 16px 36px rgba(0,0,0,.5);text-shadow:2px 2px 0 #030840}
+  .box .dim{color:#c3cdf2}
+  .box code{background:rgba(3,8,64,.6);text-shadow:none}
+  .box.more::after{content:"\25BC";position:absolute;right:14px;bottom:6px;font-size:13px;color:#fff;animation:bob 1s ease-in-out infinite}
+  @keyframes bob{50%{transform:translateY(4px)}}
+  .warn{background:linear-gradient(180deg,#7a0c1a 0%,#4a0610 100%);border-color:#ffd0d6}
+  .warn b{color:#ffe07a}
+
+  /* Fichas de estado con forma de carta del juego */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
+  .card{background:#fff;border-radius:8px;padding:6px;box-shadow:0 14px 30px rgba(0,0,0,.5);transition:transform .2s;color:#111;text-shadow:none}
+  .card:hover{transform:translateY(-4px) rotate(1deg)}
+  .card .art{height:92px;border-radius:4px;display:grid;place-items:center;overflow:hidden;position:relative;
+    background:radial-gradient(circle at 30% 20%,#7db0ff 0%,#2f6bff 35%,#0b1c8c 80%)}
+  .card .art::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 14px,rgba(255,255,255,.12) 14px 16px)}
+  .card .art b{position:relative;font-family:var(--head);font-size:34px;color:#fff;text-shadow:3px 3px 0 #030840;letter-spacing:.02em}
+  .card .art b.wip{color:var(--gold2)}
+  .card .plate{background:#111;color:#fff;font-weight:800;font-size:13px;letter-spacing:.12em;padding:3px 8px;margin-top:4px;border-radius:2px;text-transform:uppercase}
+  .card .row{display:flex;justify-content:space-between;align-items:center;padding:2px 8px;font-weight:800}
+  .card .bp{color:var(--red)} .card .sp{color:var(--blue)}
+  .card .row span:last-child{color:#222;font-weight:700;font-size:14px}
+
+  /* Progreso */
+  .progress{height:18px;border-radius:2px;background:rgba(3,8,64,.7);overflow:hidden;margin:12px 0 6px;border:2px solid #fff}
+  .progress i{display:block;height:100%;width:0;background:repeating-linear-gradient(90deg,var(--gold) 0 10px,var(--orange) 10px 12px);
+    box-shadow:0 0 14px rgba(255,200,46,.5);transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+  .pct{font-family:var(--head);font-size:24px;color:var(--gold2)}
+  .label{font-size:12px;letter-spacing:.2em;color:#c3cdf2;text-transform:uppercase}
+
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:left;padding:9px 8px;border-bottom:1px dashed rgba(255,255,255,.25)}
+  th{font-size:12px;letter-spacing:.2em;color:#c3cdf2;font-weight:700;text-transform:uppercase}
+  td.n{text-align:right;white-space:nowrap;color:#c3cdf2;font-size:15px}
+  .mini{height:8px;background:rgba(3,8,64,.7);border:1px solid rgba(255,255,255,.6);border-radius:1px;min-width:80px}
+  .mini i{display:block;height:100%;background:var(--gold)}
+  .pill{display:inline-block;padding:1px 12px;border-radius:2px;font-size:13px;font-weight:800;white-space:nowrap;border:2px solid;background:rgba(3,8,64,.6);text-shadow:none}
+  .pill.ok{color:#7ff0b8;border-color:var(--ok)}
+  .pill.wip{color:var(--gold2);border-color:var(--wip)}
+  .pill.todo{color:#d4d8f2;border-color:var(--todo)}
+
+  /* Botones */
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border-radius:3px;font-weight:800;text-decoration:none;
+    margin:6px 10px 6px 0;transition:transform .15s,box-shadow .15s;text-shadow:none}
+  .btn.primary{background:linear-gradient(180deg,var(--gold2),var(--gold) 60%,var(--orange));color:#1b1000;border:2px solid #fff;box-shadow:4px 4px 0 var(--red)}
+  .btn.secondary{border:2px solid #fff;color:#fff;background:rgba(3,8,64,.6)}
+  .btn.secondary:hover{background:#fff;color:var(--box1)}
+  .btn:hover{transform:translateY(-2px)}
+  .btn small{font-weight:600;opacity:.8}
+  .kofi{margin-top:14px;padding-top:12px;border-top:1px dashed rgba(255,255,255,.3)}
+
+  ol.steps{counter-reset:s;list-style:none;padding:0;margin:0}
+  ol.steps li{counter-increment:s;position:relative;padding:0 0 14px 46px}
+  ol.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:2px;
+    display:grid;place-items:center;font-family:var(--head);color:#1b1000;background:var(--gold);border:2px solid #fff}
+  code{font-family:Consolas,monospace;font-size:.85em;color:var(--gold2);background:rgba(255,255,255,.06);padding:1px 6px;border-radius:3px;word-break:break-all}
+  .hash td:first-child{color:#c3cdf2;white-space:nowrap}
+  ul.notes{margin:.2em 0;padding-left:1.2em}
+  ul.notes li{margin:.45em 0}
+  footer{margin-top:64px;padding-top:18px;border-top:1px solid rgba(255,200,46,.25);font-size:13px;color:var(--muted);text-align:center}
+
+  .js .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s,transform .6s}
+  .js .reveal.in{opacity:1;transform:none}
+  @media (max-width:560px){body{font-size:16px}.box{padding:18px 16px}th.hide,td.hide{display:none}}
+  @media (prefers-reduced-motion:reduce){.reveal,.progress i,.shot,.card{transition:none}.box.more::after{animation:none}}
+</style>
+</head>
+<body>
+<canvas id="fx" aria-hidden="true"></canvas>
+<main>
+  <header>
+    <div class="platform">Neo Geo Pocket Color &middot; SNK &middot; 2001</div>
+    <h1 class="logo">
+      <!-- Logo: guarda tu imagen como assets/logo.webp (si no existe, se muestra el titulo en texto) -->
+      <img src="img/logo.webp" alt="SNK vs. Capcom: Card Fighters 2 Expand Edition" onerror="this.remove()">
+      <span class="fallback">CARD FIGHTERS 2<small>EXPAND EDITION</small></span>
+    </h1>
+    <div class="subtitle"><span>TRADUCCIÓN AL ESPAÑOL</span></div>
+    <p class="dim" style="margin-top:16px">Proyecto de traducción fan por Fveralv. Progreso y descarga de los parches.</p>
+
+    <div class="shots">
+      <figure class="shot"><div class="empty">img/captura1.png</div><img src="img/captura1.png" alt="Pantalla de título" onerror="this.remove()"></figure>
+      <figure class="shot"><div class="empty">img/captura2.png</div><img src="img/captura2.png" alt="Diálogo traducido" onerror="this.remove()"></figure>
+      <figure class="shot"><div class="empty">img/captura3.png</div><img src="img/captura3.png" alt="Diálogo traducido" onerror="this.remove()"></figure>
+      <figure class="shot"><div class="empty">img/captura4.png</div><img src="img/captura4.png" alt="Diálogo traducido" onerror="this.remove()"></figure>
+    </div>
+  </header>
+
+  <div class="box warn reveal" style="margin-top:16px">
+    <p><b>&#9888; Versión beta.</b> La traducción aún no se ha jugado de principio a fin. Puede haber textos que no quepan en su ventana o frases raras. Las <b>imágenes y la interfaz gráfica todavía no están traducidas</b>: los rótulos que el juego dibuja como imagen siguen en inglés.</p>
+  </div>
+
+  <div class="box reveal" style="margin-top:16px">
+    <div class="label">Progreso del texto</div>
+    <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+    <span class="pct" id="pct">0%</span> <span class="dim">&nbsp;2754 de 3579 cadenas; faltan gráficos, pruebas completas y revisión</span>
+  </div>
+
+  <h2 class="reveal">Por secciones</h2>
+  <div class="box reveal">
+    <table>
+      <thead><tr><th>Sección</th><th class="hide">Avance</th><th></th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr><td>Menús y combate</td><td class="hide"><div class="mini"><i style="width:97%"></i></div></td><td class="n">653 / 673</td><td><span class="pill ok">Completo</span></td></tr>
+        <tr><td>Habilidades de cartas</td><td class="hide"><div class="mini"><i style="width:97%"></i></div></td><td class="n">463 / 475</td><td><span class="pill ok">Completo</span></td></tr>
+        <tr><td>Diálogos de la historia</td><td class="hide"><div class="mini"><i style="width:90%"></i></div></td><td class="n">1206 / 1347</td><td><span class="pill ok">Casi completo</span></td></tr>
+        <tr><td>Ayuda y series</td><td class="hide"><div class="mini"><i style="width:52%"></i></div></td><td class="n">191 / 366</td><td><span class="pill wip">En curso</span></td></tr>
+        <tr><td>Nombres de cartas</td><td class="hide"><div class="mini"><i style="width:37%"></i></div></td><td class="n">237 / 644</td><td><span class="pill wip">En curso</span></td></tr>
+        <tr><td>Tildes, ñ, ¿ y ¡</td><td class="hide"></td><td class="n"></td><td><span class="pill ok">Completo</span></td></tr>
+        <tr><td>Imágenes e interfaz gráfica</td><td class="hide"><div class="mini"><i style="width:0%"></i></div></td><td class="n"></td><td><span class="pill todo">Pendiente</span></td></tr>
+        <tr><td>Prueba completa en juego</td><td class="hide"></td><td class="n"></td><td><span class="pill wip">En curso</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="reveal">Descarga</h2>
+  <div class="box reveal">
+    <a class="btn primary" href="CardFighters2_ES_base_Ingles_v1-25-17R.ips" download>&#11015; Parche base inglesa <small>123 KB</small></a>
+    <a class="btn primary" href="CardFighters2_ES_base_Japones.ips" download>&#11015; Parche base japonesa <small>203 KB</small></a>
+    <a class="btn secondary" id="repo" href="https://github.com/FJVERALV">Repositorio</a>
+    <p class="dim">Los dos parches dan la misma ROM traducida: elige el que corresponda a la ROM que tengas. Solo contienen las diferencias con la ROM original; no incluyen el juego, necesitas tu propia copia.</p>
+    <div class="kofi">
+      <p class="dim">¿Te gusta lo que hago? Si crees que mi trabajo merece la pena, puedes apoyarme invitándome a un café. ¡Cualquier aporte me ayuda a seguir creando! ☕</p>
+      <script type="text/javascript" src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"></script><script type="text/javascript">kofiwidget2.init('Support me on Ko-fi', '#e8283a', 'S6P527KUBF');kofiwidget2.draw();</script>
+    </div>
+  </div>
+
+  <h2 class="reveal">Cómo aplicarlo</h2>
+  <div class="box reveal">
+    <ol class="steps">
+      <li>Ten tu ROM de <b>Card Fighters 2 Expand Edition</b>: la del parche inglés <code>English v1-25-17R</code> o la japonesa original, sin modificar.</li>
+      <li>Abre cualquier parcheador IPS (Lunar IPS, Floating IPS, RomPatcher.js…).</li>
+      <li>Aplica el <code>.ips</code> que corresponda y guarda el resultado con otro nombre, sin sobrescribir la ROM original.</li>
+    </ol>
+    <p class="dim" style="margin-top:6px">Comprueba antes que tu ROM es la correcta (SHA-256):</p>
+    <table class="hash">
+      <tr><td>ROM inglesa v1-25-17R</td><td><code>0BC35BA4C4B9FA560512399A7854E174D57F6B8CE49530A0DF8D9B3365AAF64C</code></td></tr>
+      <tr><td>ROM japonesa</td><td><code>AA09950FD6E6B79E372F937262BA53EAF81FE940556126C0F05F13ECA47FFAD5</code></td></tr>
+      <tr><td>ROM traducida</td><td><code>AE02AAA2B7AEAAEF0A967D590502F03504DEDB7DBB7BE55C8BB1D0231C2F32A1</code></td></tr>
+    </table>
+  </div>
+
+  <h2 class="reveal">Notas de traducción</h2>
+  <div class="box more reveal">
+    <ul class="notes">
+      <li>La fuente del juego no tenía tildes ni ñ: se han añadido á é í ó ú ñ Ñ ¿ ¡ en huecos libres. Las mayúsculas con tilde no caben, así que los textos en mayúsculas van sin ella.</li>
+      <li>Los nombres de personajes, técnicas y muchas cartas se mantienen como en el original.</li>
+      <li>Si encuentras un texto cortado, que se sale de la ventana o un símbolo raro, abre una incidencia en el repositorio indicando dónde estabas y la frase exacta.</li>
+    </ul>
+  </div>
+
+  <h2 class="reveal">Créditos</h2>
+  <div class="box reveal">
+    <p>Traducción al español: <b style="color:var(--gold2)">Fveralv</b></p>
+    <p class="dim">Basada en la traducción al inglés creada por el equipo <b><a href="https://cfc2english.blogspot.com/">https://cfc2english.blogspot.com/</a></b>.</p>
+  </div>
+
+  <footer>
+    Proyecto de traducción fan por Fveralv, sin ánimo de lucro.<br>
+    SNK vs. Capcom: Card Fighters 2 Expand Edition es marca de sus respectivos propietarios. No se distribuye ninguna copia del juego.
+  </footer>
+</main>
+
+<script>
+(function(){
+  document.documentElement.className += " js";
+  // Progreso del texto: editar aqui al avanzar
+  var PROGRESS = 77;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Enlace al repositorio deducido de la direccion de GitHub Pages (usuario.github.io/repositorio)
+  var m = location.hostname.match(/^([^.]+)\.github\.io$/), seg = location.pathname.split("/").filter(Boolean)[0];
+  if (m && seg) document.getElementById("repo").href = "https://github.com/" + m[1] + "/" + seg + "/";
+
+  // Aparicion al hacer scroll
+  var els = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window && !reduce) {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, {threshold:.1});
+    els.forEach(function(e){ io.observe(e); });
+  } else els.forEach(function(e){ e.classList.add("in"); });
+  setTimeout(function(){ els.forEach(function(e){ e.classList.add("in"); }); }, 2500);
+
+  // Barra de progreso
+  var bar = document.getElementById("bar"), pct = document.getElementById("pct");
+  setTimeout(function(){
+    bar.style.width = PROGRESS + "%";
+    if (reduce) { pct.textContent = PROGRESS + "%"; return; }
+    var v = 0, t = setInterval(function(){ v++; pct.textContent = v + "%"; if (v >= PROGRESS) clearInterval(t); }, 22);
+  }, reduce ? 0 : 700);
+
+  // Fondo: cartas del juego flotando (dorso azul SNK, dorso rojo CAPCOM) y chispas doradas
+  var c = document.getElementById("fx"), x = c.getContext("2d"), cards = [], sparks = [];
+  function size(){
+    c.width = innerWidth; c.height = innerHeight; cards = []; sparks = [];
+    var n = Math.min(18, Math.floor(innerWidth * innerHeight / 90000) + 6);
+    for (var i = 0; i < n; i++) cards.push({x:Math.random()*c.width, y:Math.random()*c.height, s:.5+Math.random()*.8,
+      r:Math.random()*6.28, vr:(Math.random()-.5)*.004, vy:.12+Math.random()*.25, red:Math.random()<.4, a:.08+Math.random()*.12});
+    var k = Math.min(120, Math.floor(innerWidth * innerHeight / 12000));
+    for (var j = 0; j < k; j++) sparks.push({x:Math.random()*c.width, y:Math.random()*c.height, r:Math.random()*1.3+.2, p:Math.random()*6.28, s:.5+Math.random()});
+  }
+  size(); addEventListener("resize", size);
+  function card(cd){
+    var w = 44*cd.s, h = 62*cd.s;
+    x.save(); x.translate(cd.x, cd.y); x.rotate(cd.r); x.globalAlpha = cd.a;
+    x.fillStyle = "#fff"; x.fillRect(-w/2, -h/2, w, h);
+    x.fillStyle = cd.red ? "#b3162a" : "#1a3cc8"; x.fillRect(-w/2+3, -h/2+3, w-6, h-6);
+    x.strokeStyle = "rgba(255,255,255,.7)"; x.lineWidth = 2;
+    x.beginPath(); x.moveTo(-w/4, -h/2+6); x.lineTo(0, 0); x.lineTo(-w/6, 2); x.lineTo(w/5, h/2-6); x.stroke();   // rayo del dorso
+    x.restore();
+  }
+  function draw(t){
+    x.clearRect(0, 0, c.width, c.height);
+    for (var i = 0; i < sparks.length; i++) {
+      var s = sparks[i], a = reduce ? .5 : .3 + .45 * Math.sin(s.p + (t||0)/1000*s.s);
+      x.beginPath(); x.arc(s.x, s.y, s.r, 0, 6.28); x.fillStyle = "rgba(255,224,122," + a + ")"; x.fill();
+    }
+    for (var j = 0; j < cards.length; j++) {
+      var cd = cards[j];
+      if (!reduce) { cd.y -= cd.vy; cd.r += cd.vr; if (cd.y < -60) { cd.y = c.height + 60; cd.x = Math.random()*c.width; } }
+      card(cd);
+    }
+    if (!reduce) requestAnimationFrame(draw);
+  }
+  draw(0);
+})();
+</script>
+</body>
+</html>
